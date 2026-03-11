@@ -6,6 +6,10 @@ const increasecounter = () => {
   return counter;
 };
 
+const decreasecounter = () => {
+  counter -= 1;
+  return counter;
+};
 const getcounter = () => counter;
 
 const resetcounter = () => {
@@ -13,4 +17,4 @@ const resetcounter = () => {
   return counter;
 };
 
-module.exports = { increasecounter, getcounter, resetcounter };
+module.exports = { increasecounter, decreasecounter, getcounter, resetcounter };
