@@ -1,6 +1,6 @@
 const express = require('express');
 const logger = require('./logger');
-const { increasecounter, getcounter, resetcounter } = require('./counter');
+const { increasecounter, decreasecounter, getcounter, resetcounter } = require('./counter');
 
 const router = express.Router();
 
@@ -11,6 +11,15 @@ router.get('/counter-increase', (req, res) => {
   logger.info(`[COUNTER] increase ${newCount}`);
   res.json({ count: newCount });
 });
+
+// poistaa vähentää counteria
+router.get('/counter-decrease', (req, res) => {
+  logger.info('[ENDPOINT] GET /counter-decrease');
+  const newCount = decreasecounter();
+  logger.info(`[COUNTER] increase ${newCount}`);
+  res.json({ count: newCount });
+});
+
 // lue counter arvo ja logaa tekemiset
 router.get('/counter-read', (req, res) => {
   logger.info('[ENDPOINT] GET /counter-read');
@@ -25,5 +34,6 @@ router.get('/counter-reset', (req, res) => {
   logger.info(`[COUNTER] zeroed ${resetcount}`);
   res.json({ count: resetcount });
 });
+
 
 module.exports = router;
